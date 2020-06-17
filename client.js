@@ -27,7 +27,7 @@ const employees = [
     name: "Mayella",
     employeeNumber: "89068",
     annualSalary: "35000",
-    reviewRating: 1,
+    reviewRating: 2,
   },
 ];
 
@@ -41,25 +41,41 @@ const employees = [
 // Ask questions when you don't.
 function main() {
   for (let e of employees) {
-    console.log(efunc(e));
+    console.log(employeefunc(e));
   }
 }
 
-let calculator = (value) => {
-  switch (value) {
-    case value <= 2:
-      console.log("poop");
-      break;
-  }
-};
+// let calculator = (rating) => {
+//   switch (rating) {
+//     case rating === 2:
+//       return "zero";
+//       break;
+//     default:
+//       return "poop2";
+//   }
+// };
 
-let efunc = (employeeObject) => {
+let employeefunc = (employeeObject) => {
+  let calculator2 = (value) => {
+    if (value <= 2) {
+      return "You are fired with no bonus!!";
+    } else if (value === 3) {
+      return salary * 0.04;
+    } else if (value === 4) {
+      return salary * 0.06;
+    } else if (value === 5) {
+      return salary * 0.1;
+    } else {
+      return "poop";
+    }
+  };
   let rating = employeeObject.reviewRating;
-  console.log(rating);
+  let salary = employeeObject.annualSalary;
+  let earnedBonus = calculator2(rating);
 
   let newEmployee = {
     name: employeeObject.name,
-    bonusPercentage: calculator(rating),
+    bonusPercentage: earnedBonus,
     totalCompensation: null,
     totalBonus: null,
   };
